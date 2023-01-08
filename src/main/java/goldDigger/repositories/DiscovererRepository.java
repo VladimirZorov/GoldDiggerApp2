@@ -22,16 +22,16 @@ public class DiscovererRepository implements Repository<Discoverer>{
 
     @Override
     public void add(Discoverer discoverer) {
-
+        discoverers.put(discoverer.getName(), discoverer);
     }
 
     @Override
     public boolean remove(Discoverer discoverer) {
-        return false;
+        return discoverers.remove(discoverer.getName()) != null;
     }
 
     @Override
     public Discoverer byName(String name) {
-        return null;
+        return discoverers.get(name);
     }
 }

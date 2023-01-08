@@ -3,6 +3,7 @@ package goldDigger.repositories;
 import goldDigger.models.spot.Spot;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -17,21 +18,21 @@ public class SpotRepository implements Repository<Spot>{
 
     @Override
     public Collection<Spot> getCollection() {
-        return null;
+        return Collections.unmodifiableCollection(spots.values());
     }
 
     @Override
-    public void add(Spot entity) {
-
+    public void add(Spot spot) {
+        spots.put(spot.getName(), spot);
     }
 
     @Override
-    public boolean remove(Spot entity) {
-        return false;
+    public boolean remove(Spot spot) {
+        return spots.remove(spot)!= null;
     }
 
     @Override
     public Spot byName(String name) {
-        return null;
+        return spots.get(name);
     }
 }
