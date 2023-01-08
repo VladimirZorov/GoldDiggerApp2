@@ -54,6 +54,11 @@ public abstract class BaseDiscoverer implements Discoverer {
 
     @Override
     public void dig() {
-
+        if (this.energy - 15 < 0) {
+            this.energy = 0;
+        } else {
+            this.energy -= 15;
+        }
+//this.energy = Math.max(0, this.energy -15);
     }
 }
